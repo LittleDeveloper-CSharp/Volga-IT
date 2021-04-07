@@ -1,0 +1,7 @@
+C:\Users\Popka\source\repos\Simbirsoft\bin\Debug\Simbirsoft.exe.config
+C:\Users\Popka\source\repos\Simbirsoft\bin\Debug\Simbirsoft.exe
+C:\Users\Popka\source\repos\Simbirsoft\bin\Debug\Simbirsoft.pdb
+C:\Users\Popka\source\repos\Simbirsoft\obj\Debug\Simbirsoft.csprojAssemblyReference.cache
+C:\Users\Popka\source\repos\Simbirsoft\obj\Debug\Simbirsoft.csproj.CoreCompileInputs.cache
+C:\Users\Popka\source\repos\Simbirsoft\obj\Debug\Simbirsoft.exe
+C:\Users\Popka\source\repos\Simbirsoft\obj\Debug\Simbirsoft.pdb
