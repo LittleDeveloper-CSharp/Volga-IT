@@ -21,26 +21,21 @@ namespace Simbirsoft
             
             using(StreamReader reader = new StreamReader(fileName))
             {
-                string[] file = reader.ReadToEnd().Split(new string[] { " ", "<", ">", "\n", "/", "" }, StringSplitOptions.RemoveEmptyEntries);
-                file = file.Select(x => x.Replace(" ", "")).ToArray();
-                
+                string[] file = reader.ReadToEnd().Split(new char[] { ',', '.', '!', '?', '"', ';', ':', '[', ']', '(', ')', '\n', '\r', '\t' }); 
                 foreach(var i in file)
                 {
-                    var lower = string.Concat(i.Select(x => char.ToLower(x)));
+                    var lower = string.Concat(i.Where(x=>arr_ru.Contains(char.ToLower(x))).Select(x => char.ToLower(x)));
 
-                    if (lower.IndexOfAny(arr_ru) != -1)
-                    {
-                        if (item.ContainsKey(lower))
-                            item[lower]++;
-                        else
-                            item.Add(lower, 1);
-                    }
+                    if (item.ContainsKey(lower))
+                        item[lower]++;
+                    else
+                        item.Add(lower, 1);
 
                 }
                 StreamWriter writer = new StreamWriter("test.txt");
                 foreach (var a in item)
                 {
-                    writer.Write($"{a.Key} {a.Value}\n");
+                    writer.Write($"{a.Key} - {a.Value}\n");
                 }
                 
             }
