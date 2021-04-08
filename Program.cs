@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+using Simbirsoft.Parser;
+using Simbirsoft.CounterWords;
+using System.Diagnostics;
+using System.Reflection;
+using System.Threading;
 
 namespace Simbirsoft
 {
@@ -13,31 +11,47 @@ namespace Simbirsoft
     {
         static void Main(string[] args)
         {
-            char[] arr_ru = new char[] { 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ь', 'ы', 'ъ', 'э', 'ю', 'я' };
-            var url = new Uri("https://www.simbirsoft.com/");
-            string fileName = "html.txt";
-            new WebClient().DownloadFile(url, fileName);
-            var item = new Dictionary<string, int>();
-            
-            using(StreamReader reader = new StreamReader(fileName))
+            ParseHtml parse = new ParseHtml();
+
+            Console.Write("Введите URL: ");
+            var url = Console.ReadLine();
+
+            Console.WriteLine();
+
+            Console.Write("Введите кол-во вхождений слова: ");
+            var countText = Console.ReadLine();
+
+            try
             {
-                string[] file = reader.ReadToEnd().Split(new char[] { ',', '.', '!', '?', '"', ';', ':', '[', ']', '(', ')', '\n', '\r', '\t' }); 
-                foreach(var i in file)
+                if (int.TryParse(countText, out int count))
                 {
-                    var lower = string.Concat(i.Where(x=>arr_ru.Contains(char.ToLower(x))).Select(x => char.ToLower(x)));
+                    //"https://www.simbirsoft.com/"
+                    var streamHtml = parse.GetHtmlStream(url);
 
-                    if (item.ContainsKey(lower))
-                        item[lower]++;
-                    else
-                        item.Add(lower, 1);
+                    var parsedHtml = parse.ParseHtmlOfStream(streamHtml);
 
+                    UniqueWords uniqueWords = new UniqueWords();
+
+                    var clearArray = uniqueWords.ClearArrayWithWord(parsedHtml);
+
+                    var dictionaryUniqueWord = uniqueWords.CountUniqueWord(clearArray);
+
+                    foreach (var keyValue in dictionaryUniqueWord)
+                    {
+                        if(keyValue.Value >= count)
+                            Console.WriteLine($"{keyValue.Key} - {keyValue.Value}");
+                    }
                 }
-                StreamWriter writer = new StreamWriter("test.txt");
-                foreach (var a in item)
-                {
-                    writer.Write($"{a.Key} - {a.Value}\n");
-                }
-                
+                else
+                    throw new Exception("Некорректное число");
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("\nНажмите любую кнопку...");
+                Console.ReadKey();
+                Process.Start(Assembly.GetExecutingAssembly().Location);
+                Environment.Exit(0);
             }
         }
     }
