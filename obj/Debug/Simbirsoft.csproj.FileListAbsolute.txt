@@ -5,3 +5,13 @@ C:\Users\Popka\source\repos\Simbirsoft\obj\Debug\Simbirsoft.csprojAssemblyRefere
 C:\Users\Popka\source\repos\Simbirsoft\obj\Debug\Simbirsoft.csproj.CoreCompileInputs.cache
 C:\Users\Popka\source\repos\Simbirsoft\obj\Debug\Simbirsoft.exe
 C:\Users\Popka\source\repos\Simbirsoft\obj\Debug\Simbirsoft.pdb
+C:\Users\Popka\source\repos\Simbirsoft\bin\Debug\UniqueWords.db
+C:\Users\Popka\source\repos\Simbirsoft\bin\Debug\EntityFramework.dll
+C:\Users\Popka\source\repos\Simbirsoft\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Popka\source\repos\Simbirsoft\bin\Debug\System.Data.SQLite.dll
+C:\Users\Popka\source\repos\Simbirsoft\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Popka\source\repos\Simbirsoft\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Popka\source\repos\Simbirsoft\bin\Debug\EntityFramework.xml
+C:\Users\Popka\source\repos\Simbirsoft\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Popka\source\repos\Simbirsoft\bin\Debug\System.Data.SQLite.xml
+C:\Users\Popka\source\repos\Simbirsoft\obj\Debug\Simbirsoft.csproj.CopyComplete
